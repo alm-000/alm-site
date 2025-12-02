@@ -2,15 +2,18 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-gray-200 bg-white">
-      <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-3 px-4 py-6 text-xs text-gray-500 sm:px-6 sm:py-8 sm:flex-row sm:justify-between lg:px-8">
-        <p className="text-center sm:text-left">
+    <footer className="bg-cv-panel border-t border-cv-border">
+      <div className="cv-shell flex flex-col items-start justify-between gap-2 py-4 text-xs text-cv-muted md:flex-row md:items-center">
+        <p className="text-xs text-cv-muted">
           © {year} Alex Magee. All rights reserved.
         </p>
-        <nav aria-label="Footer" className="flex flex-wrap items-center gap-4">
+        <nav
+          aria-label="Footer"
+          className="flex flex-wrap items-center gap-4 text-[11px] font-semibold uppercase tracking-cvwide"
+        >
           <a
-            href="/privacy"
-            className="hover:text-gray-700 transition-colors"
+            href="#"
+            className="transition-colors hover:text-cv-text"
           >
             Privacy
           </a>
@@ -18,7 +21,7 @@ export default function Footer() {
             href="https://linkedin.com/in/placeholder"
             target="_blank"
             rel="noreferrer"
-            className="hover:text-gray-700 transition-colors"
+            className="transition-colors hover:text-cv-text"
           >
             LinkedIn
           </a>
@@ -26,7 +29,7 @@ export default function Footer() {
             href="https://github.com/alm-000"
             target="_blank"
             rel="noreferrer"
-            className="hover:text-gray-700 transition-colors"
+            className="transition-colors hover:text-cv-text"
           >
             GitHub
           </a>

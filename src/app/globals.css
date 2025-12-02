@@ -2,20 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer base {
+  html,
+  body {
+    @apply bg-cv-bg text-cv-text font-[family-name:var(--font-body)] antialiased min-h-screen;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  h1,
+  .h1 {
+    @apply text-4xl md:text-5xl font-extrabold tracking-cvtight uppercase leading-none;
+    @apply font-[family-name:var(--font-display)];
+  }
+
+  h2,
+  .h2 {
+    @apply mt-8 text-xl font-extrabold tracking-wide uppercase;
+    @apply font-[family-name:var(--font-display)];
+  }
+
+  h3,
+  .h3 {
+    @apply mt-4 text-base font-bold tracking-wide uppercase;
+    @apply font-[family-name:var(--font-display)];
+  }
+
+  p {
+    @apply text-sm leading-relaxed text-cv-muted;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .cv-shell {
+    @apply mx-auto max-w-6xl px-4 py-10 md:px-6 lg:px-8;
+  }
+
+  .cv-grid {
+    @apply grid gap-6 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)];
+  }
+
+  .cv-label {
+    @apply inline-block bg-cv-accent px-3 py-1 text-xs font-bold uppercase tracking-cvwide text-white;
+  }
+
+  .cv-tag {
+    @apply inline-flex items-center justify-center rounded-sm border border-cv-border bg-cv-panel px-2 py-1 text-[11px] font-semibold uppercase tracking-cvwide text-cv-text;
+  }
+
+  .cv-panel {
+    @apply bg-cv-panel border border-cv-border p-4;
+  }
 }

@@ -10,20 +10,40 @@ const navItems = [
 
 export default function Header() {
   return (
-    <header className="border-b border-gray-200 bg-white/80 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-5xl flex-col items-start gap-4 px-4 py-4 sm:px-6 sm:py-5 md:flex-row md:items-center md:justify-between lg:px-8">
-        <div className="text-lg font-semibold tracking-tight">
-          <Link href="/" className="hover:text-gray-600 transition-colors">
+    <header className="bg-cv-panel border-b border-cv-border">
+      <div className="cv-shell flex items-center justify-between gap-4 py-3">
+        <div>
+          <Link
+            href="/"
+            className="text-sm font-extrabold tracking-cvtight uppercase"
+          >
             Alex Magee
           </Link>
         </div>
-        <nav aria-label="Primary" className="w-full md:w-auto">
-          <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium text-gray-700 md:flex-nowrap md:justify-end">
+        <nav aria-label="Primary" className="hidden md:block">
+          <ul className="flex flex-wrap items-center gap-x-6 gap-y-1 text-[11px] font-semibold uppercase tracking-cvwide text-cv-muted">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="inline-flex items-center rounded-full px-2.5 py-1.5 hover:bg-gray-100 transition-colors"
+                  className="transition-colors hover:text-cv-text"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <nav
+          aria-label="Primary"
+          className="md:hidden text-[11px] font-semibold uppercase tracking-cvwide text-cv-muted"
+        >
+          <ul className="flex flex-wrap gap-x-4 gap-y-1">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="transition-colors hover:text-cv-text"
                 >
                   {item.label}
                 </Link>
@@ -35,5 +55,3 @@ export default function Header() {
     </header>
   );
 }
-
-

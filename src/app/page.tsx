@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { blogPosts } from "../lib/blogData";
+import portraitImg from "../../assets/images/alm_image_1.JPG";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -17,52 +19,151 @@ export default function Home() {
     .slice(0, 3);
 
   return (
-    <main>
-      <section className="mb-12">
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          Alex Magee
-        </h1>
-        <p className="mt-4 max-w-xl text-base text-gray-700">
-          Product, growth, and automation for brands and systems that actually
-          ship.
-        </p>
+    <main className="space-y-16">
+      <section className="grid gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1.1fr)] md:items-center">
+        <div className="flex justify-center md:justify-start">
+          <div className="relative w-full max-w-md aspect-[3/4] bg-cv-panel border border-cv-border overflow-hidden">
+            <Image
+              src={portraitImg}
+              alt="Portrait of Alex Magee"
+              fill
+              priority
+              className="object-cover grayscale"
+            />
+          </div>
+        </div>
+
+        <div className="space-y-6">
+          <div>
+            <h1>Alex Magee</h1>
+            <p className="mt-3 text-base text-cv-text">
+              Product · Growth · Automation
+            </p>
+          </div>
+          <p className="max-w-xl">
+            Senior Product Manager &amp; Founder with 10 years building, launching,
+            and growing products across fintech, fashion, and retail. I work end
+            to end from strategy and discovery through delivery and growth,
+            turning messy problems into simple automated solutions that scale
+            revenue.
+          </p>
+          <div className="space-y-3">
+            <div>
+              <span className="cv-label">Focus</span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {[
+                "Product Strategy",
+                "Growth",
+                "Automation",
+                "AI & Data",
+                "E-commerce",
+              ].map((tag) => (
+                <span key={tag} className="cv-tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-3">
+            <div className="flex flex-wrap gap-2">
+              {["Shipping Fast", "Experiments", "Systems Thinking", "Ops"].map(
+                (tag) => (
+                  <span key={tag} className="cv-tag">
+                    {tag}
+                  </span>
+                ),
+              )}
+            </div>
+            <div className="flex flex-wrap gap-4 text-[11px] font-semibold uppercase tracking-cvwide">
+              <Link
+                href="/work"
+                className="underline underline-offset-4 decoration-[1.5px] hover:text-cv-text"
+              >
+                View work
+              </Link>
+              <Link
+                href="/contact"
+                className="hover:text-cv-text text-cv-muted"
+              >
+                Get in touch
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section className="mb-12" aria-labelledby="what-i-do-heading">
-        <h2
-          id="what-i-do-heading"
-          className="text-xl font-semibold tracking-tight"
-        >
-          What I do
-        </h2>
-        <p className="mt-3 max-w-2xl text-sm text-gray-700">
-          I work with brands, operators, and founders to ship product, grow
-          revenue, and automate the boring parts so more energy goes into the
-          work that matters.
-        </p>
-        <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-gray-700">
-          <li>Product &amp; growth strategy for DTC, SaaS, and e-commerce.</li>
-          <li>Automation, AI, and n8n workflows that remove manual ops.</li>
-          <li>Systems for operations, reporting, and continuous experimentation.</li>
-        </ul>
+      <section
+        className="grid gap-10 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1.1fr)]"
+        aria-labelledby="what-i-do-heading"
+      >
+        <div>
+          <h2 id="what-i-do-heading">What I do</h2>
+          <p className="mt-3 max-w-xl">
+            I work with brands, operators, and founders to ship product, grow
+            revenue, and automate the boring parts so more energy goes into the
+            work that matters.
+          </p>
+          <ul className="mt-3 list-disc space-y-1 pl-5">
+            <li>Product &amp; growth strategy for DTC, SaaS, and e-commerce.</li>
+            <li>Automation, AI, and n8n workflows that remove manual ops.</li>
+            <li>
+              Systems for operations, reporting, and continuous experimentation.
+            </li>
+          </ul>
+        </div>
+
+        <div className="space-y-4">
+          <h2 className="h2 mt-0">Latest Articles</h2>
+          {latestPosts.length === 0 ? (
+            <p>Articles are coming soon.</p>
+          ) : (
+            <div className="space-y-4">
+              {latestPosts.map((post) => (
+                <article key={post.slug} className="cv-panel">
+                  <h3 className="h3 mt-0">
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="hover:text-cv-text"
+                    >
+                      {post.title}
+                    </Link>
+                  </h3>
+                  <p className="mt-1 text-xs text-cv-muted">
+                    {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}{" "}
+                    · {post.readingTimeMinutes} min read
+                  </p>
+                  <p className="mt-2 text-sm">{post.description}</p>
+                </article>
+              ))}
+            </div>
+          )}
+          <div>
+            <Link
+              href="/blog"
+              className="text-[11px] font-semibold uppercase tracking-cvwide text-cv-muted hover:text-cv-text"
+            >
+              View all articles →
+            </Link>
+          </div>
+        </div>
       </section>
 
-      <section className="mb-12" aria-labelledby="featured-work-heading">
+      <section className="space-y-4" aria-labelledby="featured-work-heading">
         <div className="flex items-baseline justify-between gap-4">
-          <h2
-            id="featured-work-heading"
-            className="text-xl font-semibold tracking-tight"
-          >
-            Featured Work
-          </h2>
+          <h2 id="featured-work-heading">Featured Work</h2>
           <Link
             href="/work"
-            className="text-xs font-medium text-gray-600 hover:text-gray-900"
+            className="text-[11px] font-semibold uppercase tracking-cvwide text-cv-muted hover:text-cv-text"
           >
             View all work
           </Link>
         </div>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <div className="mt-2 grid gap-4 md:grid-cols-2">
           {[
             {
               title: "Dansu – towel brand growth & automation",
@@ -85,88 +186,20 @@ export default function Home() {
                 "Built a simple system for testing offers, funnels, and retention flows without blocking on engineering.",
             },
           ].map((project) => (
-            <article
-              key={project.title}
-              className="flex flex-col justify-between rounded-lg border border-gray-200 bg-white px-4 py-4"
-            >
-              <div>
-                <h3 className="text-sm font-semibold tracking-tight">
-                  {project.title}
-                </h3>
-                <p className="mt-2 text-xs text-gray-700">
-                  {project.description}
-                </p>
-              </div>
+            <article key={project.title} className="cv-panel">
+              <h3 className="h3 mt-0">{project.title}</h3>
+              <p className="mt-2 text-sm">{project.description}</p>
               <div className="mt-3">
                 <Link
                   href="/work"
-                  className="text-xs font-medium text-gray-700 hover:text-gray-900"
+                  className="text-[11px] font-semibold uppercase tracking-cvwide text-cv-muted hover:text-cv-text"
                 >
                   View more in Work →
                 </Link>
               </div>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section aria-labelledby="latest-articles-heading">
-        <div className="flex items-baseline justify-between gap-4">
-          <h2
-            id="latest-articles-heading"
-            className="text-xl font-semibold tracking-tight"
-          >
-            Latest Articles
-          </h2>
-          <Link
-            href="/blog"
-            className="text-xs font-medium text-gray-600 hover:text-gray-900"
-          >
-            View all articles
-          </Link>
-        </div>
-        {latestPosts.length === 0 ? (
-          <p className="mt-4 text-sm text-gray-600">
-            Articles are coming soon.
-          </p>
-        ) : (
-          <div className="mt-4 space-y-4">
-            {latestPosts.map((post) => (
-              <article
-                key={post.slug}
-                className="rounded-lg border border-gray-200 bg-white px-4 py-4"
-              >
-                <h3 className="text-sm font-semibold tracking-tight">
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="hover:text-gray-900"
-                  >
-                    {post.title}
-                  </Link>
-                </h3>
-                <p className="mt-1 text-xs text-gray-500">
-                  {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })}{" "}
-                  · {post.readingTimeMinutes} min read
-                </p>
-                <p className="mt-2 text-xs text-gray-700">
-                  {post.description}
-                </p>
-                <div className="mt-3">
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="text-xs font-medium text-gray-700 hover:text-gray-900"
-                  >
-                    Read article →
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        )}
+    </div>
       </section>
     </main>
   );

@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Anton } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const anton = Anton({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: "400",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
+const cotham = localFont({
+  src: "../../assets/fonts/CothamSans.otf",
+  variable: "--font-body",
+  weight: "400",
 });
 
 const siteTitle = "Alex Magee | Product, Growth & Automation";
@@ -47,15 +49,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-gray-900`}
-      >
+      <body className={`${anton.variable} ${cotham.variable} antialiased`}>
         <div className="min-h-screen flex flex-col">
           <Header />
           <main className="flex-1">
-            <div className="mx-auto w-full max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
-              {children}
-            </div>
+            <div className="cv-shell">{children}</div>
           </main>
           <Footer />
         </div>
