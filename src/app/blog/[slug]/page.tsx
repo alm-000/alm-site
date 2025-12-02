@@ -1,24 +1,22 @@
-import { Metadata } from "next";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { blogPosts } from "@/lib/blogData";
 
-type BlogPostPageProps = {
-  params: {
-    slug: string;
-  };
+type Params = {
+  slug: string;
 };
 
 // Pre-generate all blog routes
-export function generateStaticParams() {
+export function generateStaticParams(): Params[] {
   return blogPosts.map((post) => ({
     slug: post.slug,
   }));
 }
 
 // Per-page <head> metadata
-export async function generateMetadata(
-  { params }: BlogPostPageProps
-): Promise<Metadata> {
+export async function generateMetadata(props: any): Promise<Metadata> {
+  const { params } = (await props) as { params: Params };
   const post = blogPosts.find((p) => p.slug === params.slug);
 
   if (!post) {
@@ -35,7 +33,8 @@ export async function generateMetadata(
 }
 
 // Page component
-export default function BlogPostPage({ params }: BlogPostPageProps) {
+export default function BlogPostPage(props: any) {
+  const { params } = props as { params: Params };
   const post = blogPosts.find((p) => p.slug === params.slug);
 
   if (!post) {
@@ -60,7 +59,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         {post.description}
       </p>
 
-      {/* TODO: replace with real rich content later */}
       <section className="prose prose-neutral max-w-none text-[15px]">
         <p>
           This is a placeholder body for “{post.title}”. Replace this with a
