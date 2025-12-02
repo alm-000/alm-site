@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { blogPosts } from "../lib/blogData";
-import portraitImg from "../../assets/images/alm_image_1.JPG";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -24,7 +23,7 @@ export default function Home() {
         <div className="flex justify-center md:justify-start">
           <div className="relative w-full max-w-md aspect-[3/4] bg-cv-panel border border-cv-border overflow-hidden">
             <Image
-              src={portraitImg}
+              src="/assets/images/alm_image_1.JPG"
               alt="Portrait of Alex Magee"
               fill
               priority

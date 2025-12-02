@@ -12,7 +12,7 @@ const anton = Anton({
 });
 
 const cotham = localFont({
-  src: "../../assets/fonts/CothamSans.otf",
+  src: "../../public/assets/fonts/CothamSans.otf",
   variable: "--font-body",
   weight: "400",
 });
