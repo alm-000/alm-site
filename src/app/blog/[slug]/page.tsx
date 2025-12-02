@@ -1,115 +1,72 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { blogPosts } from "../../../lib/blogData";
+import { blogPosts } from "@/lib/blogData";
 
-type Params = {
-  slug: string;
+type BlogPostPageProps = {
+  params: {
+    slug: string;
+  };
 };
 
-export function generateStaticParams(): Params[] {
+// Pre-generate all blog routes
+export function generateStaticParams() {
   return blogPosts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export function generateMetadata({ params }: { params: Params }): Metadata {
+// Per-page <head> metadata
+export async function generateMetadata(
+  { params }: BlogPostPageProps
+): Promise<Metadata> {
   const post = blogPosts.find((p) => p.slug === params.slug);
 
   if (!post) {
     return {
-      title: "Article not found",
+      title: "Blog | Alex Magee",
+      description: "Articles on product, growth, automation, and experiments.",
     };
   }
 
-  const title = post.title;
-
   return {
-    title,
+    title: `${post.title} | Alex Magee`,
     description: post.description,
-    alternates: {
-      canonical: `/blog/${post.slug}`,
-    },
-    openGraph: {
-      title,
-      description: post.description,
-      type: "article",
-      url: `/blog/${post.slug}`,
-    },
   };
 }
 
-export default function BlogPostPage({ params }: { params: Params }) {
+// Page component
+export default function BlogPostPage({ params }: BlogPostPageProps) {
   const post = blogPosts.find((p) => p.slug === params.slug);
 
   if (!post) {
     notFound();
   }
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.description,
-    datePublished: post.publishedAt,
-    dateModified: post.updatedAt ?? post.publishedAt,
-    url: `https://alex-magee.com/blog/${post.slug}`,
-    author: {
-      "@type": "Person",
-      name: "Alex Magee",
-    },
-  };
-
   return (
-    <main>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <article className="prose prose-sm max-w-none prose-p:text-gray-700 prose-headings:text-gray-900">
-        <header className="mb-6">
-          <h1 className="text-2xl font-semibold tracking-tight">
-            {post.title}
-          </h1>
-          <p className="mt-2 text-xs text-gray-500">
-            {new Date(post.publishedAt).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })}{" "}
-            · {post.readingTimeMinutes} min read
-          </p>
-          {post.tags.length > 0 && (
-            <p className="mt-2 text-[11px] uppercase tracking-wide text-gray-500">
-              {post.tags.join(" · ")}
-            </p>
-          )}
-        </header>
+    <main className="max-w-3xl mx-auto px-4 py-16 space-y-8">
+      <header className="space-y-3">
+        <p className="text-xs uppercase tracking-[0.24em] text-neutral-500">
+          Article
+        </p>
+        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
+          {post.title}
+        </h1>
+        <p className="text-sm text-neutral-500">
+          {post.publishedAt} · {post.readingTimeMinutes} min read
+        </p>
+      </header>
 
-        <section className="space-y-4">
-          <p>
-            This is a placeholder for the full article. For now, it sketches the
-            kind of work and thinking behind the headline: practical, focused
-            on operators, and grounded in shipped work instead of theory.
-          </p>
-          <p>
-            Over time, this space will expand into specific playbooks, examples,
-            and templates you can adapt to your own product, brand, or team.
-          </p>
-          <p>
-            If you&apos;d like to talk through how this applies to your
-            situation, you can always reach out via{" "}
-            <a
-              href="mailto:hello@alex-magee.com"
-              className="font-medium text-gray-900 underline underline-offset-2"
-            >
-              email
-            </a>
-            .
-          </p>
-        </section>
-      </article>
+      <p className="text-base leading-relaxed text-neutral-700">
+        {post.description}
+      </p>
+
+      {/* TODO: replace with real rich content later */}
+      <section className="prose prose-neutral max-w-none text-[15px]">
+        <p>
+          This is a placeholder body for “{post.title}”. Replace this with a
+          richer article layout once the structure of the site is locked.
+        </p>
+      </section>
     </main>
   );
 }
-
-
