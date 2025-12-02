@@ -6,17 +6,13 @@ type Params = {
   slug: string;
 };
 
-type PageProps = {
-  params: Params;
-};
-
 export function generateStaticParams(): Params[] {
   return blogPosts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
+export function generateMetadata({ params }: { params: Params }): Metadata {
   const post = blogPosts.find((p) => p.slug === params.slug);
 
   if (!post) {
@@ -42,7 +38,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
   };
 }
 
-export default function BlogPostPage({ params }: PageProps) {
+export default function BlogPostPage({ params }: { params: Params }) {
   const post = blogPosts.find((p) => p.slug === params.slug);
 
   if (!post) {
