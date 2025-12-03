@@ -1,23 +1,29 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
-import { blogPosts } from "@/lib/blogData";
+import { getAllSlugs, getPostBySlug } from "@/lib/blog";
 
-type Params = {
+type BlogPostPageParams = {
   slug: string;
 };
 
+type BlogPostPageProps = {
+  params: Promise<Record<string, string>>;
+};
+
 // Pre-generate all blog routes
-export function generateStaticParams(): Params[] {
-  return blogPosts.map((post) => ({
-    slug: post.slug,
+export function generateStaticParams(): BlogPostPageParams[] {
+  return getAllSlugs().map((slug) => ({
+    slug,
   }));
 }
 
 // Per-page <head> metadata
-export async function generateMetadata(props: any): Promise<Metadata> {
-  const { params } = (await props) as { params: Params };
-  const post = blogPosts.find((p) => p.slug === params.slug);
+export async function generateMetadata(
+  { params }: BlogPostPageProps,
+): Promise<Metadata> {
+  const resolvedParams = (await params) as BlogPostPageParams;
+  const post = await getPostBySlug(resolvedParams.slug);
 
   if (!post) {
     return {
@@ -33,13 +39,21 @@ export async function generateMetadata(props: any): Promise<Metadata> {
 }
 
 // Page component
-export default function BlogPostPage(props: any) {
-  const { params } = props as { params: Params };
-  const post = blogPosts.find((p) => p.slug === params.slug);
+export default async function BlogPostPage({
+  params,
+}: BlogPostPageProps) {
+  const resolvedParams = (await params) as BlogPostPageParams;
+  const post = await getPostBySlug(resolvedParams.slug);
 
   if (!post) {
     notFound();
   }
+
+  const dateLabel = new Date(post.publishedAt).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 
   return (
     <main className="max-w-3xl mx-auto px-4 py-16 space-y-8">
@@ -51,19 +65,31 @@ export default function BlogPostPage(props: any) {
           {post.title}
         </h1>
         <p className="text-sm text-neutral-500">
-          {post.publishedAt} · {post.readingTimeMinutes} min read
+          {dateLabel} · {post.readingTimeMinutes} min read
         </p>
       </header>
+
+      {post.heroImage ?? post.image ? (
+        <div className="relative mt-4 aspect-[16/9] w-full overflow-hidden rounded-xl bg-neutral-200">
+          <Image
+            src={post.heroImage ?? post.image ?? ""}
+            alt={post.title}
+            fill
+            sizes="(min-width: 1024px) 768px, 100vw"
+            className="object-cover"
+            priority
+          />
+        </div>
+      ) : null}
 
       <p className="text-base leading-relaxed text-neutral-700">
         {post.description}
       </p>
 
       <section className="prose prose-neutral max-w-none text-[15px]">
-        <p>
-          This is a placeholder body for “{post.title}”. Replace this with a
-          richer article layout once the structure of the site is locked.
-        </p>
+        <div
+          dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+        />
       </section>
     </main>
   );

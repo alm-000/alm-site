@@ -50,11 +50,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${anton.variable} ${cotham.variable} antialiased`}>
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col bg-cv-bg">
           <Header />
-          <main className="flex-1">
-            <div className="cv-shell">{children}</div>
-          </main>
+          <main className="flex-1">{children}</main>
           <Footer />
         </div>
       </body>

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { aboutContent } from "@/lib/siteContent";
 
 export const metadata: Metadata = {
-  title: "About",
-  description: "A short overview of who I am and how I like to work.",
+  title: aboutContent.metadata.title,
+  description: aboutContent.metadata.description,
 };
 
 export default function AboutPage() {
@@ -12,35 +13,23 @@ export default function AboutPage() {
         <aside className="space-y-4">
           <section className="cv-panel">
             <div className="mb-3">
-              <span className="cv-label">Snapshot</span>
+              <span className="cv-label">{aboutContent.snapshot.label}</span>
             </div>
             <div className="space-y-2 text-sm">
-              <p className="text-cv-muted">
-                Senior Product Manager &amp; Founder with 10 years across
-                fintech, fashion, and retail.
-              </p>
-              <p className="text-cv-muted">
-                Work spans strategy, discovery, delivery, and growth — with a
-                bias toward automation and systems that reduce operational drag.
-              </p>
+              {aboutContent.snapshot.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="text-cv-muted">
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </section>
 
           <section className="cv-panel">
             <div className="mb-3">
-              <span className="cv-label">Capabilities</span>
+              <span className="cv-label">{aboutContent.capabilities.label}</span>
             </div>
             <div className="flex flex-wrap gap-2">
-              {[
-                "Product Strategy",
-                "Discovery",
-                "Experiments",
-                "Automation",
-                "AI & Data",
-                "Systems",
-                "User Research",
-                "Delivery",
-              ].map((tag) => (
+              {aboutContent.capabilities.tags.map((tag) => (
                 <span key={tag} className="cv-tag">
                   {tag}
                 </span>
@@ -51,51 +40,44 @@ export default function AboutPage() {
 
         <section>
           <header className="mb-4">
-            <h1>About</h1>
+            <h1>{aboutContent.metadata.title}</h1>
           </header>
 
           <section
-            aria-labelledby="background-heading"
+            aria-labelledby={aboutContent.sections.background.id}
             className="mt-4 space-y-3"
           >
-            <h2 id="background-heading">Background</h2>
+            <h2 id={aboutContent.sections.background.id}>
+              {aboutContent.sections.background.heading}
+            </h2>
             <p className="max-w-2xl">
-              I work across product, growth, and brand building — helping teams
-              ship things that matter and build systems that make shipping
-              easier over time. A lot of my work sits where strategy, execution,
-              and operations overlap.
+              {aboutContent.sections.background.body}
             </p>
           </section>
 
           <section
-            aria-labelledby="what-im-good-at-heading"
+            aria-labelledby={aboutContent.sections.whatImGoodAt.id}
             className="mt-6"
           >
-            <h2 id="what-im-good-at-heading">What I&apos;m good at</h2>
+            <h2 id={aboutContent.sections.whatImGoodAt.id}>
+              {aboutContent.sections.whatImGoodAt.heading}
+            </h2>
             <ul className="mt-3 list-disc space-y-1 pl-5">
-              <li>Shipping fast, with clear scopes and feedback loops.</li>
-              <li>
-                Building growth systems and funnels that tie back to real
-                business metrics.
-              </li>
-              <li>
-                Automating operations with AI and n8n so teams can do deeper
-                work.
-              </li>
-              <li>Translating between operators, marketers, and engineers.</li>
+              {aboutContent.sections.whatImGoodAt.bullets.map((bullet) => (
+                <li key={bullet}>{bullet}</li>
+              ))}
             </ul>
           </section>
 
           <section
-            aria-labelledby="what-im-looking-for-heading"
+            aria-labelledby={aboutContent.sections.whatImLookingFor.id}
             className="mt-6"
           >
-            <h2 id="what-im-looking-for-heading">What I&apos;m looking for</h2>
+            <h2 id={aboutContent.sections.whatImLookingFor.id}>
+              {aboutContent.sections.whatImLookingFor.heading}
+            </h2>
             <p className="mt-3 max-w-2xl">
-              I like working with teams that care about momentum and craft in
-              equal measure. I&apos;m open to product, growth, and automation
-              work — fractional, advisory, or full-time — especially where
-              there&apos;s a real problem to solve and a bias toward shipping.
+              {aboutContent.sections.whatImLookingFor.body}
             </p>
           </section>
         </section>

@@ -41,11 +41,11 @@
   }
 
   .cv-label {
-    @apply inline-block bg-cv-accent px-3 py-1 text-xs font-bold uppercase tracking-cvwide text-white;
+    @apply inline-block rounded-full bg-cv-text/90 px-3 py-1 text-xs font-semibold tracking-wide text-white;
   }
 
   .cv-tag {
-    @apply inline-flex items-center justify-center rounded-sm border border-cv-border bg-cv-panel px-2 py-1 text-[11px] font-semibold uppercase tracking-cvwide text-cv-text;
+    @apply inline-flex items-center justify-center rounded-full border border-cv-border bg-white px-3 py-1 text-xs font-medium tracking-wide text-cv-text;
   }
 
   .cv-panel {
