@@ -52,52 +52,73 @@ export default async function WorkProjectPage({
   return (
     <main>
       <PageLayout className="py-12 space-y-10">
-        <SectionHeader
-          as="h1"
-          title={project.name}
-          description={project.bullets[0]}
-        />
-
-        <section className="grid gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-start">
-          <div className="space-y-5">
-            <p className="text-xs font-medium uppercase tracking-[0.24em] text-cv-muted">
-              Role
-            </p>
-            <p className="text-sm text-cv-text">{project.role}</p>
-
-            <div className="space-y-2 mt-4">
-              <p className="text-xs font-medium uppercase tracking-[0.24em] text-cv-muted">
-                Highlights
-              </p>
-              <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-cv-muted">
-                {project.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
-                ))}
-              </ul>
-            </div>
-
-            {project.contentHtml.trim() ? (
-              <div className="space-y-2 mt-6">
-                <p className="text-xs font-medium uppercase tracking-[0.24em] text-cv-muted">
-                  Details
-                </p>
-                <div
-                  className="prose prose-neutral max-w-none text-sm"
-                  dangerouslySetInnerHTML={{ __html: project.contentHtml }}
-                />
-              </div>
-            ) : null}
-          </div>
+        <div className="flex flex-col items-center gap-6 text-center">
+          <SectionHeader
+            as="h1"
+            align="center"
+            title={project.name}
+          />
 
           {project.image ? (
-            <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl bg-neutral-200">
+            <div className="relative w-full max-w-3xl aspect-[4/3] overflow-hidden rounded-xl bg-neutral-200">
               <Image
                 src={project.image}
                 alt={project.name}
                 fill
-                sizes="(min-width: 1024px) 480px, 100vw"
+                sizes="(min-width: 1024px) 640px, 100vw"
                 className="object-cover"
               />
+            </div>
+          ) : null}
+        </div>
+
+        <section className="mx-auto max-w-3xl space-y-8">
+          <div className="space-y-3">
+            <p className="text-xs font-medium uppercase tracking-[0.24em] text-cv-muted">
+              Overview
+            </p>
+            <p className="text-base md:text-lg text-cv-text">
+              {project.bullets[0]}
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <p className="text-xs font-medium uppercase tracking-[0.24em] text-cv-muted">
+              Role
+            </p>
+            <p className="text-base md:text-lg text-cv-text">{project.role}</p>
+          </div>
+
+          <div className="space-y-3">
+            <p className="text-xs font-medium uppercase tracking-[0.24em] text-cv-muted">
+              Highlights
+            </p>
+            <ul className="mt-2 list-disc space-y-2 pl-5 text-base md:text-lg text-cv-muted">
+              {project.bullets.map((bullet) => (
+                <li key={bullet}>{bullet}</li>
+              ))}
+            </ul>
+          </div>
+
+          {project.bullets[1] ? (
+            <div className="space-y-3">
+              <p className="text-xs font-medium uppercase tracking-[0.24em] text-cv-muted">
+                What I Delivered
+              </p>
+              <p className="text-base md:text-lg text-cv-text">
+                {project.bullets[1]}
+              </p>
+            </div>
+          ) : null}
+
+          {project.bullets[2] ? (
+            <div className="space-y-3">
+              <p className="text-xs font-medium uppercase tracking-[0.24em] text-cv-muted">
+                Impact
+              </p>
+              <p className="text-base md:text-lg text-cv-text">
+                {project.bullets[2]}
+              </p>
             </div>
           ) : null}
         </section>

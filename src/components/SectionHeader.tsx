@@ -19,7 +19,7 @@ export default function SectionHeader({
 
   const headingClasses =
     as === "h1"
-      ? "text-3xl md:text-4xl font-semibold tracking-tight"
+      ? "text-4xl md:text-5xl font-semibold tracking-tight"
       : "text-xl md:text-2xl font-semibold tracking-tight";
 
   return (

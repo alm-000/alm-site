@@ -3,6 +3,10 @@ export type WorkProject = {
   name: string;
   role: string;
   bullets: string[];
+  /**
+   * Optional skills/tags used for this project (used for future filtering).
+   */
+  skills?: string[];
   image?: string;
 };
 

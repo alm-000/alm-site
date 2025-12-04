@@ -35,7 +35,13 @@ All pages are rendered statically and use standard Next.js features like route s
 
 - **App entry & layout**
   - `src/app/layout.tsx`: Root layout, global `<Header />` and `<Footer />`, metadata (Open Graph, Twitter), and font wiring.
-  - `src/app/page.tsx`: Home page. Uses `homeCopy` and `workProjects` to render the brutalist hero, latest blog posts, and featured work.
+  - `src/app/page.tsx`: Home page. Uses `homeCopy`, `aboutContent`, `contactPageContent`, and filesystem‑loaded blog/work content to render:
+    - A brutalist **hero** (`HomeHero`) with portrait, big name, and skill stack.
+    - An **About me** band (black, full‑width) with large typography plus background + “What I'm good at” copy pulled from `aboutContent`.
+    - A **Featured work** band showing selected projects in a clean 2‑up grid of square `Card`s.
+    - A **How I work** band (mint, full‑width) that explains your product/growth/automation philosophy using the “What I do” copy and bullets from `homeCopy`.
+    - A **Blog** preview band showing up to three latest posts as square `Card`s in a 2‑up grid.
+    - A compact **Contact** strip at the bottom that links through to the full `/contact` page.
   - `src/app/globals.css`: Global styles + Tailwind base layers.
 
 - **Content & configuration**
@@ -286,20 +292,13 @@ The admin page has three tabs, controlled by `activeTab: "home" | "blog" | "work
 ## How the home page uses blog and work content
 
 - **File**: `src/app/page.tsx`.
-- **Hero**:
-  - Implemented as a standalone `HomeHero` component (`src/components/HomeHero.tsx`) rendered above the main `PageLayout` content.
-  - Uses `homeCopy.heroName`, `heroTitleLine`, and `heroDescription` for copy, and displays a tall portrait image with ultra‑large “ALEX MAGEE” typography, a `PRODUCT | GROWTH | AUTOMATION` subheading, and a vertical list of slash‑prefixed skills (e.g. `/ PRODUCT STRATEGY`, `/ AI & DATA`).
-  - Layout is a two‑column, high‑contrast black‑and‑white hero: text on the left, image on the right, with generous whitespace and no rounded corners or pill tags.
-- **Rest of the home content**:
-  - "What I do" section title, description, and bullets.
-  - Section headings and labels for "Latest articles" and "Featured work".
-- **Blog on home**:
-  - Calls `getAllPosts()`, then `latestPosts = allPosts.slice(0, 3)`.
-  - If there are posts, renders three `Card`s linking to `/blog/[slug]`.
-  - If there are no posts, shows `homeCopy.articlesComingSoonMessage`.
-- **Work on home**:
-  - Takes `workProjects.slice(0, 4)` for the featured grid.
-  - Each `Card` links to `/work/[slug]` for a project detail page.
+- **Overall structure**:
+  - **Hero** – `HomeHero` sits above the main `PageLayout` and uses `homeCopy.heroName`, `heroTitleLine`, `heroDescription`, and `heroTags` for the brutalist intro.
+  - **About me** – Full‑width black band with a hard‑coded headline plus background + “What I'm good at” content from `aboutContent.sections`.
+  - **Featured work** – Neutral band inside `PageLayout` that calls `getAllProjects()` from `src/lib/work.ts`, filters/organises projects into a featured list, and renders them as square `Card`s in a 2‑up grid linking to `/work/[slug]`.
+  - **How I work** – Full‑width mint band that uses `homeCopy.whatIDoDescription` and `homeCopy.whatIDoBullets` to explain your product and build philosophy in a two‑column layout.
+  - **Blog preview** – Neutral band that calls `getAllPosts()` from `src/lib/blog.ts`, slices to the three latest posts, and renders each as a square `Card` in a 2‑up grid linking to `/blog/[slug]` (or shows `homeCopy.articlesComingSoonMessage` if there are none).
+  - **Contact strip** – Uses `contactPageContent.header.description` and `contactPageContent.emailSection.*` to show a short call‑to‑action plus buttons linking to `/contact` and a direct `mailto:` email.
 
 This means updates to MDX files in `content/blog` or to `workProjects` in `src/lib/workData.ts` will automatically flow through to the homepage.
 

@@ -41,12 +41,7 @@ export const footerContent: FooterContent = {
     { label: "Privacy", href: "#" },
     {
       label: "LinkedIn",
-      href: "https://linkedin.com/in/placeholder",
-      external: true,
-    },
-    {
-      label: "GitHub",
-      href: "https://github.com/alm-000",
+      href: "https://www.linkedin.com/in/alex-m-13b23360/",
       external: true,
     },
   ],
@@ -252,8 +247,8 @@ export const contactPageContent: ContactPageContent = {
   emailSection: {
     heading: "Email",
     descriptionPrefix: "The fastest way to reach me is by email: ",
-    emailLabel: "hello@alex-magee.com",
-    emailHref: "mailto:hello@alex-magee.com",
+    emailLabel: "alex.l.magee@gmail.com",
+    emailHref: "mailto:alex.l.magee@gmail.com",
   },
   formSection: {
     heading: "Contact form",

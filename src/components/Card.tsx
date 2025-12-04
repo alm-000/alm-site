@@ -27,9 +27,9 @@ export default function Card({
     : {};
 
   const content = (
-    <article className="h-full overflow-hidden rounded-xl border border-cv-border bg-white/80">
+    <article className="h-full overflow-hidden rounded-xl border border-cv-border bg-white">
       {imageSrc ? (
-        <div className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-200">
+        <div className="relative aspect-square w-full overflow-hidden bg-neutral-200">
           <Image
             src={imageSrc}
             alt={imageAlt ?? title}
@@ -40,7 +40,7 @@ export default function Card({
         </div>
       ) : null}
       <div className="p-5 space-y-2">
-        <h3 className="text-base font-semibold tracking-tight text-cv-text">
+        <h3 className="text-lg md:text-xl font-semibold leading-snug tracking-tight text-cv-text">
           {title}
         </h3>
         {meta ? (

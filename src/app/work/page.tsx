@@ -21,7 +21,6 @@ export default async function WorkPage() {
           title={workPageContent.header.title}
           description={workPageContent.header.description}
         />
-
         <section
           aria-label={workPageContent.projectsSectionAriaLabel}
           className="grid gap-6 md:grid-cols-2 md:gap-8"
@@ -34,18 +33,7 @@ export default async function WorkPage() {
               imageSrc={project.image}
               meta={project.role}
               description={project.bullets[0]}
-            >
-              <ul className="mt-2 list-disc space-y-1 pl-5 text-xs text-cv-muted">
-                {project.bullets.slice(1).map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
-                ))}
-              </ul>
-              <div className="mt-3">
-                <span className="text-xs font-medium tracking-wide text-cv-muted hover:text-cv-text">
-                  {workPageContent.readMoreLabel}
-                </span>
-              </div>
-            </Card>
+            />
           ))}
         </section>
       </PageLayout>

@@ -36,6 +36,21 @@
     @apply mx-auto max-w-6xl px-4 py-10 md:px-6 lg:px-8;
   }
 
+  .work-prose h1,
+  .work-prose h2,
+  .work-prose h3,
+  .work-prose h4 {
+    @apply font-[family-name:var(--font-body)] normal-case tracking-normal;
+  }
+
+  .work-prose h2 {
+    @apply mt-6 text-xs font-medium uppercase tracking-[0.24em] text-cv-muted;
+  }
+
+  .work-prose h3 {
+    @apply mt-4 text-xs font-medium uppercase tracking-[0.24em] text-cv-muted;
+  }
+
   .cv-grid {
     @apply grid gap-6 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)];
   }

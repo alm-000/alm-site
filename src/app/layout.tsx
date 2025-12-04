@@ -28,6 +28,10 @@ export const metadata: Metadata = {
     template: "%s | Alex Magee",
   },
   description: siteDescription,
+  icons: {
+    icon: "/assets/images/alm_favicon-32x32.png",
+    shortcut: "/assets/images/alm_favicon-32x32.png",
+  },
   openGraph: {
     title: siteTitle,
     description: siteDescription,
