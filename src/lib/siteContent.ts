@@ -70,17 +70,17 @@ export type HomeCopy = {
 
 export const homeCopy: HomeCopy = {
   heroName: "Alex Magee",
-  heroTitleLine: "Product · Growth · Automation",
+  heroTitleLine: "Product Management · Systems · Growth",
   heroDescription:
-    "Senior Product Manager & Founder with 10 years building, launching, and growing products across fintech, fashion, and retail. I work end to end from strategy and discovery through delivery and growth, turning messy problems into simple automated solutions that scale revenue.",
+    "Senior Product Manager with 10 years building, launching, and growing products across fintech, fashion, and retail. I work end to end from strategy and discovery through delivery and growth, turning messy problems into simple systems that keep teams shipping.",
   heroTags: ["Product Strategy", "Growth", "Automation", "AI & Data", "E-commerce"],
   whatIDoTitle: "What I do",
   whatIDoDescription:
-    "I work with brands, operators, and founders to ship product, grow revenue, and automate the boring parts so more energy goes into the work that matters.",
+    "I build product and growth systems inside teams — focusing on the loops, automation, and decision-making that keep work moving without adding headcount.",
   whatIDoBullets: [
-    "Product & growth strategy for DTC, SaaS, and e-commerce.",
-    "Automation, AI, and n8n workflows that remove manual ops.",
-    "Systems for operations, reporting, and continuous experimentation.",
+    "Product strategy and execution across discovery, delivery, and iteration.",
+    "Growth and experimentation systems that tie directly to business metrics.",
+    "Automation and analytics that reduce operational drag and surface the right signals.",
   ],
   latestArticlesTitle: "Latest articles",
   featuredWorkTitle: "Featured work",
@@ -90,9 +90,9 @@ export const homeCopy: HomeCopy = {
   viewAllWorkLabel: "View all work",
   articlesComingSoonMessage: "Articles are coming soon.",
   metadata: {
-    title: "Home",
+    title: "Product Manager — Work & Writing",
     description:
-      "Product, growth, and automation for brands and systems that actually ship.",
+      "Product management, growth, and automation — a portfolio of projects and writing focused on systems that actually ship.",
   },
 };
 
@@ -157,7 +157,7 @@ export const aboutContent: AboutContent = {
     background: {
       id: "background-heading",
       heading: "Background",
-      body: "I work across product, growth, and brand building — helping teams ship things that matter and build systems that make shipping easier over time. A lot of my work sits where strategy, execution, and operations overlap.",
+      body: "I work across product, growth, and brand building — helping teams ship things that matter and build systems that make shipping easier over time. A lot of my work sits where strategy, execution, and operations overlap, with a strong bias toward automated, data-backed flows.",
     },
     whatImGoodAt: {
       id: "what-im-good-at-heading",
@@ -172,7 +172,7 @@ export const aboutContent: AboutContent = {
     whatImLookingFor: {
       id: "what-im-looking-for-heading",
       heading: "What I'm looking for",
-      body: "I like working with teams that care about momentum and craft in equal measure. I'm open to product, growth, and automation work — fractional, advisory, or full-time — especially where there's a real problem to solve and a bias toward shipping.",
+      body: "I like working with teams that care about momentum and craft in equal measure. I’m most energised by products with real complexity under the hood — data, operations, and growth loops — where there’s room to design the system as well as the surface.",
     },
   },
 };
@@ -237,12 +237,12 @@ export const contactPageContent: ContactPageContent = {
   metadata: {
     title: "Contact",
     description:
-      "Get in touch about consulting, roles, or interesting product and growth problems.",
+      "Get in touch about product, growth, automation, or to share feedback on any of the projects and writing here.",
   },
   header: {
     title: "Contact",
     description:
-      "Reach out if you're working on product, growth, or automation problems and want help turning ideas into shipped work — as an advisor, collaborator, or part of your team.",
+      "Reach out if you're working on product, growth, or automation problems and want to compare notes, share context, or talk through ideas.",
   },
   emailSection: {
     heading: "Email",

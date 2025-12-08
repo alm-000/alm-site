@@ -56,41 +56,43 @@ export default async function BlogPostPage({
   });
 
   return (
-    <main className="max-w-3xl mx-auto px-4 py-16 space-y-8">
-      <header className="space-y-3">
-        <p className="text-xs uppercase tracking-[0.24em] text-neutral-500">
-          Article
-        </p>
-        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
-          {post.title}
-        </h1>
-        <p className="text-sm text-neutral-500">
-          {dateLabel} · {post.readingTimeMinutes} min read
-        </p>
-      </header>
+    <main className="max-w-3xl mx-auto px-4 py-16">
+      <article className="space-y-10">
+        <header className="space-y-3">
+          <p className="text-xs uppercase tracking-[0.24em] text-neutral-500">
+            Article
+          </p>
+          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
+            {post.title}
+          </h1>
+          <p className="text-sm text-neutral-500">
+            {dateLabel} · {post.readingTimeMinutes} min read
+          </p>
+        </header>
 
-      {post.heroImage ?? post.image ? (
-        <div className="relative mt-4 aspect-[16/9] w-full overflow-hidden rounded-xl bg-neutral-200">
-          <Image
-            src={post.heroImage ?? post.image ?? ""}
-            alt={post.title}
-            fill
-            sizes="(min-width: 1024px) 768px, 100vw"
-            className="object-cover"
-            priority
+        {post.heroImage ?? post.image ? (
+          <div className="relative mt-2 aspect-[16/9] w-full overflow-hidden rounded-xl bg-neutral-200">
+            <Image
+              src={post.heroImage ?? post.image ?? ""}
+              alt={post.title}
+              fill
+              sizes="(min-width: 1024px) 768px, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
+        ) : null}
+
+        <p className="text-base leading-relaxed text-neutral-700">
+          {post.description}
+        </p>
+
+        <section className="blog-prose">
+          <div
+            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
           />
-        </div>
-      ) : null}
-
-      <p className="text-base leading-relaxed text-neutral-700">
-        {post.description}
-      </p>
-
-      <section className="prose prose-neutral max-w-none text-[15px]">
-        <div
-          dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-        />
-      </section>
+        </section>
+      </article>
     </main>
   );
 }

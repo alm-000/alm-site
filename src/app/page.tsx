@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const allPosts = await getAllPosts();
-  const latestPosts = allPosts.slice(0, 3);
+  const latestPosts = allPosts.slice(0, 4);
 
   const allProjects = await getAllProjects();
   const featuredOrder = [
@@ -36,7 +36,10 @@ export default async function Home() {
 
   const featuredProjects = featuredOrder
     .map((slug) => allProjects.find((project) => project.slug === slug))
-    .filter((project): project is (typeof allProjects)[number] => Boolean(project));
+    .filter(
+      (project): project is (typeof allProjects)[number] => Boolean(project),
+    )
+    .slice(0, 4);
 
   return (
     <main>

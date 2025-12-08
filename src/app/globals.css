@@ -36,6 +36,53 @@
     @apply mx-auto max-w-6xl px-4 py-10 md:px-6 lg:px-8;
   }
 
+  /* Blog article typography */
+  .blog-prose {
+    @apply text-[15px] leading-relaxed text-neutral-800 space-y-6;
+  }
+
+  .blog-prose h2 {
+    @apply mt-10 text-xl font-semibold tracking-tight text-neutral-900;
+    @apply font-[family-name:var(--font-body)];
+  }
+
+  .blog-prose h3 {
+    @apply mt-8 text-base font-semibold tracking-tight text-neutral-900;
+    @apply font-[family-name:var(--font-body)];
+  }
+
+  .blog-prose p {
+    @apply text-base leading-7 text-neutral-800;
+  }
+
+  .blog-prose ul {
+    @apply ml-5 list-disc space-y-1;
+  }
+
+  .blog-prose ol {
+    @apply ml-5 list-decimal space-y-1;
+  }
+
+  .blog-prose li {
+    @apply text-base leading-7 text-neutral-800;
+  }
+
+  .blog-prose strong {
+    @apply font-semibold text-neutral-900;
+  }
+
+  .blog-prose em {
+    @apply italic;
+  }
+
+  .blog-prose blockquote {
+    @apply border-l-4 border-neutral-200 pl-4 italic text-neutral-700;
+  }
+
+  .blog-prose hr {
+    @apply my-8 border-neutral-200;
+  }
+
   .work-prose h1,
   .work-prose h2,
   .work-prose h3,

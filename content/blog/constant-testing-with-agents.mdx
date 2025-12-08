@@ -1,0 +1,263 @@
+---
+slug: constant-testing-with-agents
+title: Constant Testing With Agents
+description: >-
+  The New Role of QA in Modern Product Teams Quality assurance used to sit at
+  the end of the development process
+publishedAt: '2025-03-09T09:00:00.000Z'
+tags:
+  - blog
+readingTimeMinutes: 6
+image: /assets/images/widescreen/jonakoh-_-hWwywE9-m_w-unsplash_16x9.jpg
+cardImage: /assets/images/cards/logan-voss-c-R0jNVG2FY-unsplash_card.jpg
+heroImage: /assets/images/widescreen/jonakoh-_-hWwywE9-m_w-unsplash_16x9.jpg
+---
+## The New Role of QA in Modern Product Teams
+
+Quality assurance used to sit at the end of the development process. It acted as the final checkpoint before a feature reached users. QA teams wrote test plans, reproduced bugs, checked edge cases, and protected the product from breaking. This work was slow because it needed to be. Manual testing takes time and attention. Regression checks take even longer. And when features shipped monthly or quarterly, the process made sense.
+
+Today the pace of product development has changed. Teams ship weekly or every few days. Code paths shift constantly. Features evolve while the rest of the product moves around them. A manual QA process cannot keep up with this rhythm. It creates bottlenecks, delays, and unnecessary friction. It also increases risk, because products change faster than humans can validate.
+
+The solution is not to abandon QA. The solution is to transform it.
+
+Modern teams use agent powered testing systems that run continuously across the product. QA becomes a living layer, not a phase. It runs in the background. It catches issues early. It adapts as the product evolves. It works through agents that inspect the actual behaviour of the product in context. And it frees humans to focus on judgment, edge cases, and experience.
+
+This new style of QA is one of the most important shifts in modern product development. This article explains how it works and the systems PMs should build to get it right.
+
+---
+
+## QA used to be reactive. Now it becomes proactive.
+
+Traditional QA is triggered by the delivery of a feature. The team hands over work. QA checks it. Bugs are found. Fixes are applied. More checks happen. Eventually the feature is released. The flow is linear and predictable, but slow.
+
+With agent based QA, quality checks happen during development, not after it. Agents inspect the DOM while code is being written. They compare layouts to design tokens as soon as changes occur. They check responsiveness, alignment, spacing, accessibility, and breakpoints before the human sees the output. They validate interactions as they are created.
+
+Because agents operate continuously, QA becomes baked into the development loop instead of being bolted on at the end.
+
+---
+
+## What agent powered QA actually does
+
+Agent powered QA covers the entire surface of the product. It doesn’t replace human testers. It surrounds them and supports them.
+
+The key layers include:
+
+### Behaviour validation
+
+Agents inspect the real behaviour of the product. They click, scroll, interact, fill fields, and navigate flows. They compare intended behaviour with actual behaviour and flag mismatches.
+
+### DOM inspection
+
+Agents read the DOM directly. They identify broken layouts, invisible elements, overlapping layers, missing padding, and inconsistent spacing. They catch the details humans often miss.
+
+### Design system alignment
+
+Agents check whether the UI matches your design tokens. They verify typography, spacing rules, colours, components, shadows, radii, and responsive states. Drift becomes visible instantly.
+
+### Layout and responsiveness checks
+
+Agents simulate different screen sizes and devices. They watch how components collapse, wrap, or break. They catch issues long before users ever see them.
+
+### Regression detection
+
+Agents compare before and after snapshots of key flows. If something breaks in a part of the product unrelated to the new work, the agent flags it.
+
+### Accessibility
+
+Agents check alt text, focus states, keyboard navigation, ARIA labels, contrast ratios, and screen reader behaviour. Accessibility becomes part of the default QA system.
+
+### API and data validation
+
+Agents monitor API output, payload shapes, error codes, and response times. They check whether endpoints behave consistently between releases.
+
+### Performance checks
+
+Agents track load times, interaction latency, layout shifts, and asset sizes. Quality includes performance, not just correctness.
+
+This is the new baseline for software teams that want reliability without slowing down.
+
+---
+
+## QA shifts from “checking everything manually” to “checking the right things deeply”
+
+Manual testers often spend their time running through predictable scripts. These scripts catch repetitive problems, but they take time. Agents are far better at repetitive checks. They can run them endlessly without fatigue.
+
+Humans, meanwhile, are far better at evaluating nuance. They understand subtle interactions, emotional tone, unexpected user behaviour, and the difference between “technically correct” and “feels wrong.”
+
+The modern QA team looks like this.
+
+Agents handle:
+
+- repetitive checks
+- layout accuracy
+- regression sweeps
+- token drift
+- performance anomalies
+- broken interactions
+- accessibility basics
+
+Humans focus on:
+
+- edge cases
+- flow quality
+- narrative coherence
+- experience feel
+- usability insights
+- long tail scenarios
+- unexpected behaviour patterns
+
+The split is natural.
+
+Each works where it is strongest.
+
+---
+
+## QA becomes continuous, not scheduled
+
+Instead of waiting for a release candidate, agents run their tests as part of the everyday flow.
+
+They check after each commit.
+
+They check each environment refresh.
+
+They check during the forty eight hour build cycle.
+
+They check before a release.
+
+They check after a release.
+
+They check overnight.
+
+This is how teams maintain quality when shipping quickly. The product is being tested constantly, not occasionally.
+
+---
+
+## Agent based QA connects directly to the PM’s systems
+
+QA becomes part of the PM’s operating system.
+
+Agents feed insights into the build loop, the discovery loop, and the analytics loop.
+
+This means:
+
+Bugs become signals, not surprises.
+
+Edge cases become opportunities for improvement.
+
+Small issues get surfaced before they become big issues.
+
+Design quality is preserved automatically.
+
+Cross browser issues disappear early.
+
+Regression problems stop accumulating.
+
+The PM always knows the health of the product.
+
+The product feels more stable even as the team moves faster.
+
+---
+
+## What PMs need to implement to make this work
+
+A strong agent powered QA system requires a few components.
+
+### A. Clear design tokens
+
+Agents need a source of truth for spacing, colours, typography, and components. Without tokens, they cannot compare design with implementation.
+
+### B. A predictable UI structure
+
+Agents operate best when your component library is consistent. If your UI is a patchwork of one-off components, agents will produce endless noise.
+
+### C. A set of core journeys
+
+Define the flows that must always work. Agents run regression checks across these automatically.
+
+### D. A behavioural model
+
+Agents need instructions for what “correct behaviour” looks like. The PM defines this, not the agent.
+
+### E. A stable context stack
+
+Your context stack should include QA principles, acceptance rules, and signals that define success. The agents rely on this to evaluate the product accurately.
+
+### F. A release checklist powered by agents
+
+Agents should run the checklist.
+
+Humans should only make the final call.
+
+When these pieces are in place, QA becomes a system that runs itself.
+
+---
+
+## QA becomes a guardian of velocity, not an obstacle
+
+In slow teams, QA is often seen as a blocker. It becomes the team that prevents releases. This perception is unfair, but it exists because QA sits at the end of the process.
+
+In fast teams, QA becomes the system that protects velocity.
+
+Agents prevent slowdowns by catching issues early.
+
+They remove the need for rework.
+
+They eliminate late surprises.
+
+They reduce the amount of manual checking needed.
+
+They increase trust in each release.
+
+QA flips from “the team that slows things down” to the engine that keeps everything moving quickly and safely.
+
+---
+
+## What happens when QA is built this way
+
+The product becomes smoother.
+
+The team becomes faster.
+
+The releases become calm.
+
+The bugs become rare and predictable.
+
+The engineers focus on deep work, not firefighting.
+
+The PM focuses on strategy and intent, not chasing issues.
+
+Design remains consistent without constant policing.
+
+Discovery improves because fewer issues distort the data.
+
+This is what quality looks like in modern product development.
+
+It is not a department.
+
+It is not a phase.
+
+It is a system.
+
+---
+
+## The future of QA is deeply integrated with agents
+
+Agents will not replace QA.
+
+They will expand it.
+
+They will do the parts humans never had time to do.
+
+They will allow teams to move at high speed without breaking the product.
+
+They will act as the silent guardians that keep the product healthy.
+
+And the PM will be the one who designs the system that makes this possible.
+
+QA is no longer about checking.
+
+It is about creating a continuous layer of confidence that powers fast iteration.
+
+The teams that build this layer will define the next wave of product excellence.
+
+---

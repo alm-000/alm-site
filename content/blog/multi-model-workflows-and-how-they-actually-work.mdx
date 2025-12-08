@@ -1,0 +1,268 @@
+---
+slug: multi-model-workflows-and-how-they-actually-work
+title: Multi Model Workflows and How They Actually Work
+description: >-
+  For years, teams assumed they needed to choose a single model for their
+  product work
+publishedAt: '2025-05-09T09:00:00.000Z'
+tags:
+  - blog
+readingTimeMinutes: 6
+image: /assets/images/widescreen/jonakoh-_-PWs676hlErE-unsplash_16x9.jpg
+cardImage: /assets/images/cards/logan-voss-UhQJv9-8G58-unsplash_card.jpg
+heroImage: /assets/images/widescreen/jonakoh-_-PWs676hlErE-unsplash_16x9.jpg
+---
+For years, teams assumed they needed to choose a single model for their product work. They debated which model was “best”, which produced the cleanest code, which understood instructions most accurately, and which one offered the strongest reasoning. The expectation was that one model would eventually dominate.
+
+That never happened. Instead, the opposite occurred. Models specialised. Each one developed strengths that made it ideal for certain parts of the work but not others. Some became excellent planners. Others became strong at correctness. Others thrived in long context reasoning or structured transformation. Tools like Cursor, Claude Code, and MCP made it possible for multiple models to collaborate inside the same workflow.
+
+The result is a new style of product development built on multi model workflows. Instead of choosing one model, teams orchestrate several. This creates speed, consistency, and reliability that no single model can deliver alone. It also shifts the product manager’s role from prompting into designing the system that connects these models in the right sequence.
+
+This article explains how multi model workflows work, why they matter, and how teams can implement them today.
+
+---
+
+## Multi model workflows reflect how humans work
+
+A person rarely excels at planning, execution, analysis, review, and writing all at the same time. Teams depend on different people for different strengths. One person is good at high level design. Another is meticulous with details. Another spots edge cases. Another cares deeply about UX.
+
+Models work the same way.
+
+A multi model workflow mirrors how humans collaborate. Instead of forcing one model to perform every step, the workflow assigns each model to the tasks where it performs best. This removes friction, increases quality, and reduces hallucination risk.
+
+Multi model workflows are not a hack. They are a natural evolution of how complex work gets done.
+
+---
+
+## Why multi model workflows outperform single model workflows
+
+There are four reasons why multi model workflows matter.
+
+### A. Specialisation creates better output
+
+Some models are strong at long form reasoning. Others excel at correctness. Others handle technical transformations more precisely. Using them together produces well rounded results without forcing any single model to do everything.
+
+### B. Failure points are isolated
+
+When one model makes a mistake, another can catch it.
+
+You can build layers of review, validation, and correction that reduce error rates.
+
+### C. Workflows become consistent
+
+Each model performs a predictable role.
+
+This creates a stable system where you know what to expect.
+
+### D. Speed increases through parallelisation
+
+Models can work on different parts of the same task at the same time.
+
+This shortens build cycles and supports rapid iteration.
+
+The combined workflow is far stronger than any single model acting alone.
+
+---
+
+## The five roles inside a multi model workflow
+
+The most effective multi model systems divide work into five roles.
+
+### 1. The Planner
+
+This model handles task breakdown, sequencing, architecture decisions, and the overall reasoning behind the approach. It is the strategist of the workflow.
+
+### 2. The Builder
+
+This model writes the code, updates files, generates components, wires logic, and produces the bulk of the implementation. It works inside a code aware environment.
+
+### 3. The Reviewer
+
+This model inspects the output. It looks for correctness issues, architectural problems, UX drift, security concerns, and alignment with design rules. It acts as a quality gate.
+
+### 4. The Validator
+
+This model uses tool access to check the work in context. It inspects the DOM, runs tests, compares layouts to design tokens, checks responsiveness, and ensures the feature behaves correctly.
+
+### 5. The Documenter
+
+This model writes release notes, provides summaries, updates docs, and generates clean communication for the team.
+
+Each role can be handled by a different model depending on strengths.
+
+The workflow becomes modular and far easier to control.
+
+---
+
+## How the workflow actually runs in practice
+
+A multi model workflow is not a pile of prompts. It is a structured sequence.
+
+A typical pipeline looks like:
+
+### Step one: Intent
+
+The PM defines the high level goal in two or three sentences.
+
+### Step two: Planning agent
+
+A planning model breaks the work into steps, identifies edge cases, and outlines the approach.
+
+### Step three: Code agent
+
+A repo aware model follows the plan and implements the work.
+
+### Step four: Review agent
+
+A different model audits the output and suggests corrections.
+
+### Step five: Validation agent
+
+An MCP powered model checks real behaviour in the browser, in the filesystem, or in Figma.
+
+### Step six: Documentation agent
+
+A final model produces concise documentation, release notes, and commit summaries.
+
+This loop runs in hours, not weeks.
+
+The PM stays in a high leverage position while the agents handle large portions of the execution.
+
+---
+
+## Why the workflow needs constraints, not prompts
+
+The key to multi model work is constraint design.
+
+Models perform best when they operate inside a strict environment that defines:
+
+- standards
+- naming
+- design rules
+- architecture preferences
+- quality expectations
+- persona and tone
+- acceptance criteria
+- non negotiables
+
+Instead of prompting a model from scratch each time, teams use a context stack that every model inherits. This removes drift, maintains continuity, and preserves quality across steps.
+
+The PM no longer prompts.
+
+They design the system that prompts for them.
+
+---
+
+## How multi model workflows upgrade engineering
+
+Engineers do not get replaced by these workflows. They become far more strategic.
+
+They handle:
+
+- hard problems
+- deep architecture
+- system design
+- performance
+- security
+- non trivial edge cases
+- integration
+- refinement and review
+
+They are less weighed down by repetition and more focused on creative, high leverage work. The model handles scaffolding. Engineers handle depth.
+
+This is why engineers in multi model environments tend to produce more output in less time without burning out.
+
+---
+
+## How multi model workflows upgrade design
+
+Design teams benefit because validation becomes automated.
+
+Agents check designs against code. They detect drift. They inspect spacing, components, and responsiveness. They compare actual implementation to the design system.
+
+Designers no longer waste hours reviewing basic UI accuracy.
+
+They focus on product feel, interaction patterns, and conceptual direction.
+
+The gap between design and code tightens.
+
+---
+
+## Multi model workflows reduce risk without slowing teams down
+
+The biggest misconception about multi model workflows is that they introduce complexity. The truth is the opposite. They introduce predictability.
+
+Workflows become:
+
+- repeatable
+- reviewable
+- easy to debug
+- easy to scale
+- consistent across contributors
+- transparent to the whole team
+
+Risk doesn’t come from speed.
+
+Risk comes from poor systems.
+
+Multi model workflows remove that risk.
+
+---
+
+## How PMs operate inside these workflows
+
+The PM is the orchestrator.
+
+They do not write all the steps, but they design how the steps work together.
+
+The PM manages:
+
+- context
+- constraints
+- intent
+- acceptance criteria
+- breakdown patterns
+- review processes
+- validation layers
+- the flow between models
+
+They also judge output, refine requirements quickly, and ensure the system keeps improving. They are not a coordinator of meetings. They are the architect of the engine.
+
+This is why PMs with multi model experience become incredibly valuable.
+
+---
+
+## What a strong multi model stack includes
+
+A mature stack includes:
+
+- a planning model
+- a correctness model
+- a reasoning model
+- a long context model
+- a writing model
+- a repo-aware code model
+- DevTools MCP
+- Figma MCP
+- Filesystem MCP
+- data access agents
+- automated test generation
+- automated QA
+- a continuous feedback loop
+- a strong context stack
+
+The goal is not to use every model at once.
+
+The goal is to match the right model to the right job.
+
+---
+
+## The future belongs to teams that orchestrate well
+
+The companies that will outperform in the coming years will not be the ones using the biggest model. They will be the ones using the best orchestration. Multi model workflows are not optional. They are the new baseline for teams that want to ship quickly, learn constantly, and maintain quality while moving at speed.
+
+The PM who understands how to design these workflows will shape the future of product.
+
+This is not a trend. This is the new operating system for building software.
+
+---
